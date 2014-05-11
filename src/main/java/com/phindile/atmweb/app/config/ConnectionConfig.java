@@ -26,16 +26,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan("com.phindile.atmweb")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.phindile.atmweb.app.repository")
+@EnableJpaRepositories(basePackages = "com.phindile.atmweb.repository")
 public class ConnectionConfig {
 
     @Bean
     public DataSource dataSource() {
         BasicDataSource ds = new org.apache.commons.dbcp.BasicDataSource();
         ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        ds.setUrl("jdbc:derby://localhost:1527/atm");
-        ds.setUsername("atm");
-        ds.setPassword("atm");
+        ds.setUrl("jdbc:derby://localhost:1527/atmm");
+        ds.setUsername("atmm");
+        ds.setPassword("atmm");
         return ds;
     }
 

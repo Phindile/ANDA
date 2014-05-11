@@ -7,34 +7,43 @@
 package com.phindile.atmweb.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
  *
  * @author chiry
  */
-@Embeddable
+@Entity
 public class CardReader implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Atm atm;
-   @OneToMany(cascade = CascadeType.ALL)
-    private Card card;
+    private String atm_name;
+    
+    @Column(unique=true)
+    private String cardreader_num;
+   @OneToMany(cascade=CascadeType.ALL)
+   @JoinColumn(name="atm_name")
+    List<Card> card;
+    
    
     
     private CardReader(Builder builder)
     {
-        this.atm=builder.atm;
+        this.atm_name=builder.atm_name;
         this.id=builder.id;
         this.card=builder.card;
+        this.cardreader_num=builder.cardreader_num;
         
     }
      private CardReader()  
@@ -43,21 +52,34 @@ public class CardReader implements Serializable {
      }
      public static class Builder{
          private Long id;
-         private Atm atm;
-         private Card card;
+         private String atm_name;
+         List<Card> card;
+         private String cardreader_num;
          
+         public Builder(String cardreader_num)
+         {
+             this.cardreader_num=cardreader_num;
+         }
          public Builder Id(Long val)
          {
              this.id=val;
              return this;
          }
-         private Builder atm(Atm val)
+         public Builder atm_name_cardr(String val)
          {
-             this.atm=val;
+             this.atm_name=val;
              return this;
          }
-         public Builder Card(Card val){
+         public Builder Card(List<Card> val){
              this.card=val;
+             return this;
+         }
+         public Builder CardReader(CardReader cardreader)
+         {
+             this.cardreader_num=cardreader.getCardreader_num();
+             this.card=cardreader.getCard();
+             this.id=cardreader.getId();
+             this.atm_name=cardreader.getAtm();
              return this;
          }
          
@@ -71,12 +93,17 @@ public class CardReader implements Serializable {
         return id;
     }
 
-    public com.phindile.atmweb.domain.Card getCard() {
+    public List<Card> getCard() {
         return card;
     }
 
-    public Atm getAtm() {
-        return atm;
+    public String getCardreader_num() {
+        return cardreader_num;
+    }
+    
+
+    public String getAtm() {
+        return atm_name;
     }
      
   

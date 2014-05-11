@@ -23,7 +23,7 @@ public class OperatorPanel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
      private Long id;
-     private Atm atm;
+     private atmm atm;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class OperatorPanel implements Serializable {
         this.id = id;
     }
 
-    public Atm getAtm() {
+    public atmm getAtm() {
         return atm;
     }
 
-    public void setAtm(Atm atm) {
+    public void setAtm(atmm atm) {
         this.atm = atm;
     }
      

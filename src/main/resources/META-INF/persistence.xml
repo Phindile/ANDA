@@ -14,6 +14,12 @@
     <class>com.phindile.atmweb.domain.OperatorPanel</class>
     <class>com.phindile.atmweb.domain.Card</class>
     <class>com.phindile.atmweb.domain.Money</class>
+    <class>com.phindile.atmweb.domain.Bank</class>
+    <class>com.phindile.atmweb.domain.Customer</class>
+    <class>com.phindile.atmweb.domain.ATM</class>
+    <class>com.phindile.atmweb.domain.Transaction</class>
+    <class>com.phindile.atmweb.domain.Account</class>
+    <class>com.phindile.atmweb.domain.atmm</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
